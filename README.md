@@ -4,23 +4,11 @@ QR codes are a similar idea to barcodes, but extended in 2 dimensions. This allo
 
 Some of the main applications of QR codes:
 
-- sharing text
-- sharing URLs
+- sharing text and URLs
 - sharing Wifi login information
 - sharing contact info
 - sharing GPS coordinates
 
-## Sharing Text and URLs
+## Libraries
 
-Text and URLs are pretty straightforward. You just pass in a unicode string and it gets converted into a QR code. Your QR code reader should automatically recognize URLs via the *https* at the beginning of the string.
-
-## Sharing Wifi Data
-
-
-
-## Sharing Contact Info
-
-
-
-## Sharing GPS Coordinates
-
+All the QR generation in this repo is powered by **Python 3.11** and the **Segno** module. Segno seems to be the best QR code library available [based on these stats](https://segno.readthedocs.io/en/latest/comparison-qrcode-libs.html). I've tested all of the various QR code styles and they work on all the hardware I currently have available. It is awesome.
