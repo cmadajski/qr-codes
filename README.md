@@ -12,3 +12,5 @@ Some of the main applications of QR codes:
 ## Libraries
 
 All the QR generation in this repo is powered by **Python 3.11** and the **Segno** module. Segno seems to be the best QR code library available [based on these stats](https://segno.readthedocs.io/en/latest/comparison-qrcode-libs.html). I've tested all of the various QR code styles and they work on all the hardware I currently have available. It is awesome.
+
+Segno has [extensive documentation](https://segno.readthedocs.io/en/latest/make.html) that explains the details of the package.
