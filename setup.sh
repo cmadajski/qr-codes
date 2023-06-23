@@ -22,6 +22,7 @@ if [ -f ".venv" ]; then
     steps_success=$(($steps_success + 1))
 else
     echo -e "${red}[!]${reset} ERROR while creating virtual environment."
+fi
 # activate virtual environment
 source .venv/bin/activate
 if [ -z "${env | grep }" ]; then
@@ -29,4 +30,5 @@ if [ -z "${env | grep }" ]; then
 else
     echo -e "${green}[-]${reset} Virtual env activated."
     steps_success=$(($steps_success + 1))
+fi
 echo -e "    SUMMARY: ${blue}${steps_success}${reset} / ${steps_total} successful."
