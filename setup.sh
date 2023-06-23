@@ -6,6 +6,8 @@ orange="\033[93m"
 blue="\033[96m"
 reset="\033[0m"
 
+venv_created=0
+venv_activated=0
 steps_success=0
 steps_total=5
 
@@ -23,14 +25,12 @@ if [ -f ".venv" ]; then
     venv_created=1
 else
     echo -e "${red}[!]${reset} ERROR while creating virtual environment."
-    venv_created=0
 fi
 # activate virtual environment
-if [ ${venv_created} -eq 1 ]; then
+if [ $venv_created -eq 1 ]; then
     source .venv/bin/activate
     if [ -z "$(env | grep )" ]; then
         echo -e "${red}[!]${reset} ERROR virtual env could not be activated."
-        venv_activated=0
     else
         echo -e "${green}[-]${reset} Virtual env activated."
         steps_success=$(($steps_success + 1))
@@ -38,7 +38,7 @@ if [ ${venv_created} -eq 1 ]; then
     fi
 fi
 # install dependencies
-if [ ${venv_activated} -eq 1 ]; then
+if [ $venv_activated -eq 1 ]; then
     python3 -m pip install -r requirements.txt
     echo -e "${green}[-]${reset} Dependencies installed"
     steps_success=$(($steps_success + 1))
