@@ -60,7 +60,7 @@ fi
 
 # install dependencies
 if [[ $venv_activated -eq 1 ]]; then
-    python3 -m pip install -r requirements.txt
+    python3 -m pip install -q -r requirements.txt
     echo -e "${green}[-]${reset} Dependencies installed"
     steps_success=$(($steps_success + 1))
 fi
