@@ -26,7 +26,7 @@ else
     venv_created=0
 fi
 # activate virtual environment
-if [ $venv_created -eq 1 ]; then
+if [ ${venv_created} -eq 1 ]; then
     source .venv/bin/activate
     if [ -z "$(env | grep )" ]; then
         echo -e "${red}[!]${reset} ERROR virtual env could not be activated."
@@ -38,7 +38,7 @@ if [ $venv_created -eq 1 ]; then
     fi
 fi
 # install dependencies
-if [ $venv_activated -eq 1 ]; then
+if [ ${venv_activated} -eq 1 ]; then
     python3 -m pip install -r requirements.txt
     echo -e "${green}[-]${reset} Dependencies installed"
     steps_success=$(($steps_success + 1))
