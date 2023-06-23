@@ -56,6 +56,7 @@ else
             venv_activated=1
         fi
     fi
+fi
 
 # install dependencies
 if [[ $venv_activated -eq 1 ]]; then
