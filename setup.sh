@@ -19,7 +19,7 @@ echo -e "${blue}[-]${reset} Pip installed."
 steps_success=$(($steps_success + 1))
 # create virtual environment
 python3 -m venv .venv
-if [ -f ".venv" ]; then
+if [[ -f ".venv" ]]; then
     echo -e "${green}[-]${reset} Virtual environment created."
     steps_success=$(($steps_success + 1))
     venv_created=1
@@ -27,9 +27,9 @@ else
     echo -e "${red}[!]${reset} ERROR while creating virtual environment."
 fi
 # activate virtual environment
-if [ $venv_created -eq 1 ]; then
+if [[ $venv_created -eq 1 ]]; then
     source .venv/bin/activate
-    if [ -z "$(env | grep )" ]; then
+    if [[ -z "$(env | grep )" ]]; then
         echo -e "${red}[!]${reset} ERROR virtual env could not be activated."
     else
         echo -e "${green}[-]${reset} Virtual env activated."
@@ -38,15 +38,15 @@ if [ $venv_created -eq 1 ]; then
     fi
 fi
 # install dependencies
-if [ $venv_activated -eq 1 ]; then
+if [[ $venv_activated -eq 1 ]]; then
     python3 -m pip install -r requirements.txt
     echo -e "${green}[-]${reset} Dependencies installed"
     steps_success=$(($steps_success + 1))
 fi
 
-if [ $steps_success -eq 5 ]; then
+if [[ $steps_success -eq 5 ]]; then
     echo -e "    SUMMARY: ${green}${steps_success}${reset} / ${steps_total} successful."
-elif [ $steps_success -gt 2 ]; then
+elif [[ $steps_success -gt 2 ]]; then
     echo -e "    SUMMARY: ${orange}${steps_success}${reset} / ${steps_total} successful."
 else
     echo -e "    SUMMARY: ${red}${steps_success}${reset} / ${steps_total} successful."
