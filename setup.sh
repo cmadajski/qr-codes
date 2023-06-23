@@ -44,7 +44,7 @@ if [ $venv_activated -eq 1 ]; then
     steps_success=$(($steps_success + 1))
 fi
 
-if [ $steps_success -eq 5 ]: then
+if [ $steps_success -eq 5 ]; then
     echo -e "    SUMMARY: ${green}${steps_success}${reset} / ${steps_total} successful."
 elif [ $steps_success -gt 2 ]; then
     echo -e "    SUMMARY: ${orange}${steps_success}${reset} / ${steps_total} successful."
