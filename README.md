@@ -9,8 +9,40 @@ Some of the main applications of QR codes:
 - sharing contact info
 - sharing GPS coordinates
 
-## Libraries
+## Dependencies
 
-All the QR generation in this repo is powered by **Python 3.11** and the **Segno** module. Segno seems to be the best QR code library available [based on these stats](https://segno.readthedocs.io/en/latest/comparison-qrcode-libs.html). I've tested all of the various QR code styles and they work on all the hardware I currently have available. It is awesome.
+There are only 3 dependencies for this project:
 
-Segno has [extensive documentation](https://segno.readthedocs.io/en/latest/make.html) that explains the details of the package.
+1. Python 3.11
+2. [Segno](https://segno.readthedocs.io/en/latest/)
+3. [PyYAML](https://pyyaml.org/wiki/PyYAMLDocumentation)
+
+## Installation
+
+Clone the repo to your local system:
+
+`git clone https://github.com/cmadajski/qr-codes.git`
+
+Run the setup script if you are on Linux or MacOS (if you are using Windows, please reconsider your poor decisions and repent). You may need to allow execution privileges before running the script:
+
+```bash
+sudo chmod +x setup.sh
+source setup.sh
+```
+
+Run the main script to actually generate the QR code. The only required argument is the type of QR code being created (text, wifi, mecard, or gps).
+
+```bash
+python3 generate_qr.py text
+```
+
+There are a number of useful command line options that can be used to increase efficiency and customize QR code output:
+
+```bash
+# set a custom scale value (default is 7)
+python3 generate_qr.py -s 12 text
+# set a custom filepath for the output QR code, includes a custom filename
+python3 generate_qr.py -f "~/Downloads/mydata.png" mecard
+# read QR code data from a YAML config file
+python3 generate_qr.py -c "~/Code/configs/mydata.yaml" gps
+```
