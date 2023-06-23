@@ -25,7 +25,7 @@ else
 fi
 # activate virtual environment
 source .venv/bin/activate
-if [ -z "${env | grep }" ]; then
+if [ -z "$(env | grep )" ]; then
     echo -e "${red}[!]${reset} ERROR virtual env could not be activated."
 else
     echo -e "${green}[-]${reset} Virtual env activated."
