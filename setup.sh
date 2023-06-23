@@ -22,27 +22,40 @@ python3 -m ensurepip --upgrade
 echo -e "${blue}[-]${reset} Pip installed."
 steps_success=$(($steps_success + 1))
 
-# create virtual environment
-python3 -m venv .venv
+# check if virtual environment already exists
 if [[ -d ".venv" ]]; then
-    echo -e "${green}[-]${reset} Virtual environment created."
+    echo -e "${green}[-]${reset} Virtual environment already exists."
     steps_success=$(($steps_success + 1))
     venv_created=1
 else
-    echo -e "${red}[!]${reset} ERROR while creating virtual environment."
-fi
-
-# activate virtual environment
-if [[ $venv_created -eq 1 ]]; then
-    source .venv/bin/activate
-    if [[ -z "$(env | grep )" ]]; then
-        echo -e "${red}[!]${reset} ERROR virtual env could not be activated."
-    else
-        echo -e "${green}[-]${reset} Virtual env activated."
+    # create virtual environment
+    python3 -m venv .venv
+    if [[ -d ".venv" ]]; then
+        echo -e "${green}[-]${reset} Virtual environment created."
         steps_success=$(($steps_success + 1))
-        venv_activated=1
+        venv_created=1
+    else
+        echo -e "${red}[!]${reset} ERROR while creating virtual environment."
     fi
 fi
+
+# check if a virtual environment is already active
+if [[ -z "$(env | grep VIRTUAL_ENV)" ]]; then
+    echo -e "${green}[-]${reset} Virtual env is already active."
+            steps_success=$(($steps_success + 1))
+            venv_activated=1
+else
+    # activate virtual environment
+    if [[ $venv_created -eq 1 ]]; then
+        source .venv/bin/activate
+        if [[ -z "$(env | grep VIRTUAL_ENV)" ]]; then
+            echo -e "${red}[!]${reset} ERROR virtual env could not be activated."
+        else
+            echo -e "${green}[-]${reset} Virtual env activated."
+            steps_success=$(($steps_success + 1))
+            venv_activated=1
+        fi
+    fi
 
 # install dependencies
 if [[ $venv_activated -eq 1 ]]; then
