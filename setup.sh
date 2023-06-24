@@ -40,7 +40,7 @@ else
 fi
 
 # check if a virtual environment is already active
-if [[ -z "$(env | grep VIRTUAL_ENV)" ]]; then
+if [[ -v "VIRTUAL_ENV" ]]; then
     echo -e "${green}[-]${reset} Virtual env is already active."
             steps_success=$(($steps_success + 1))
             venv_activated=1
@@ -48,7 +48,7 @@ else
     # activate virtual environment
     if [[ $venv_created -eq 1 ]]; then
         source .venv/bin/activate
-        if [[ -z "$(env | grep VIRTUAL_ENV)" ]]; then
+        if [[ -v "VIRTUAL_ENV" ]]; then
             echo -e "${red}[!]${reset} ERROR virtual env could not be activated."
         else
             echo -e "${green}[-]${reset} Virtual env activated."
